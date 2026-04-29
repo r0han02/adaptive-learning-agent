@@ -1,0 +1,1444 @@
+{
+  "javascript": {
+    "easy": [
+      {
+        "q": "What keyword declares a variable that can be reassigned?",
+        "opts": [
+          "let",
+          "const",
+          "final",
+          "static"
+        ],
+        "ans": 0,
+        "explain": "'let' declares a block-scoped variable that can be reassigned."
+      },
+      {
+        "q": "Which method adds an element to the end of an array?",
+        "opts": [
+          "push()",
+          "pop()",
+          "shift()",
+          "unshift()"
+        ],
+        "ans": 0,
+        "explain": "push() appends elements to the end of an array."
+      },
+      {
+        "q": "What does typeof null return?",
+        "opts": [
+          "'object'",
+          "'null'",
+          "'undefined'",
+          "'boolean'"
+        ],
+        "ans": 0,
+        "explain": "typeof null returns 'object' \u2014 a known JS quirk."
+      },
+      {
+        "q": "Which symbol is used for single-line comments?",
+        "opts": [
+          "//",
+          "/* */",
+          "#",
+          "--"
+        ],
+        "ans": 0,
+        "explain": "// starts a single-line comment in JavaScript."
+      },
+      {
+        "q": "What is the output of: 2 + '2'?",
+        "opts": [
+          "'22'",
+          "4",
+          "NaN",
+          "Error"
+        ],
+        "ans": 0,
+        "explain": "JS coerces the number to string, resulting in concatenation."
+      },
+      {
+        "q": "Which built-in method sorts array elements?",
+        "opts": [
+          "sort()",
+          "order()",
+          "arrange()",
+          "rank()"
+        ],
+        "ans": 0,
+        "explain": "sort() sorts array elements in place."
+      }
+    ],
+    "medium": [
+      {
+        "q": "What does Array.prototype.reduce() do?",
+        "opts": [
+          "Reduces array to single value",
+          "Removes duplicates",
+          "Filters elements",
+          "Sorts elements"
+        ],
+        "ans": 0,
+        "explain": "reduce() executes a reducer function on each element, returning a single output value."
+      },
+      {
+        "q": "What is a closure in JavaScript?",
+        "opts": [
+          "A function with access to its outer scope",
+          "A sealed object",
+          "A type of loop",
+          "A class method"
+        ],
+        "ans": 0,
+        "explain": "A closure is a function that retains access to variables from its enclosing scope."
+      },
+      {
+        "q": "What does the '===' operator check?",
+        "opts": [
+          "Value and type equality",
+          "Value equality only",
+          "Reference equality",
+          "Deep equality"
+        ],
+        "ans": 0,
+        "explain": "'===' checks both value and type without coercion."
+      },
+      {
+        "q": "Which method returns a new array with filtered elements?",
+        "opts": [
+          "filter()",
+          "find()",
+          "some()",
+          "every()"
+        ],
+        "ans": 0,
+        "explain": "filter() creates a new array with elements that pass a test."
+      },
+      {
+        "q": "What is event bubbling?",
+        "opts": [
+          "Events propagate from child to parent",
+          "Events propagate from parent to child",
+          "Events stop immediately",
+          "Events repeat"
+        ],
+        "ans": 0,
+        "explain": "In bubbling, events propagate upward from the target to ancestors."
+      },
+      {
+        "q": "What does Promise.all() do?",
+        "opts": [
+          "Resolves when all promises resolve",
+          "Resolves first promise",
+          "Rejects all promises",
+          "Chains promises"
+        ],
+        "ans": 0,
+        "explain": "Promise.all() waits for all promises to resolve or any to reject."
+      }
+    ],
+    "hard": [
+      {
+        "q": "What is the output of: (function(){ return typeof arguments; })()",
+        "opts": [
+          "'object'",
+          "'array'",
+          "'function'",
+          "'undefined'"
+        ],
+        "ans": 0,
+        "explain": "arguments is an array-like object, so typeof returns 'object'."
+      },
+      {
+        "q": "What does Object.freeze() NOT prevent?",
+        "opts": [
+          "Modifying nested objects",
+          "Adding properties",
+          "Removing properties",
+          "Modifying existing values"
+        ],
+        "ans": 0,
+        "explain": "Object.freeze() is shallow \u2014 nested objects can still be mutated."
+      },
+      {
+        "q": "Which describes the event loop correctly?",
+        "opts": [
+          "Processes microtasks before macrotasks",
+          "Processes macrotasks before microtasks",
+          "Processes both simultaneously",
+          "Only handles synchronous code"
+        ],
+        "ans": 0,
+        "explain": "Microtasks (Promises) have priority over macrotasks (setTimeout)."
+      },
+      {
+        "q": "What is a WeakMap used for?",
+        "opts": [
+          "Holding object keys without preventing GC",
+          "Faster lookups than Map",
+          "Storing primitive keys",
+          "Immutable storage"
+        ],
+        "ans": 0,
+        "explain": "WeakMap holds weak references to object keys, allowing garbage collection."
+      },
+      {
+        "q": "What does 'use strict' NOT do?",
+        "opts": [
+          "Enable block scoping for var",
+          "Prevent undeclared variables",
+          "Disallow duplicate params",
+          "Make 'this' undefined in functions"
+        ],
+        "ans": 0,
+        "explain": "'use strict' doesn't change var scoping \u2014 var is always function-scoped."
+      },
+      {
+        "q": "What is the Temporal Dead Zone?",
+        "opts": [
+          "Period between hoisting and initialization of let/const",
+          "Memory allocated for unused vars",
+          "Time before DOM loads",
+          "Garbage collection phase"
+        ],
+        "ans": 0,
+        "explain": "TDZ is the period where let/const variables exist but can't be accessed before declaration."
+      }
+    ]
+  },
+  "python": {
+    "easy": [
+      {
+        "q": "How do you print text in Python?",
+        "opts": [
+          "print()",
+          "echo()",
+          "console.log()",
+          "write()"
+        ],
+        "ans": 0,
+        "explain": "print() is the built-in function for outputting text."
+      },
+      {
+        "q": "Which keyword defines a function?",
+        "opts": [
+          "def",
+          "function",
+          "func",
+          "fn"
+        ],
+        "ans": 0,
+        "explain": "'def' is used to define functions in Python."
+      },
+      {
+        "q": "What is a list in Python?",
+        "opts": [
+          "An ordered mutable collection",
+          "An immutable sequence",
+          "A key-value store",
+          "A fixed-size array"
+        ],
+        "ans": 0,
+        "explain": "Lists are ordered, mutable sequences denoted by square brackets."
+      },
+      {
+        "q": "How do you create a comment?",
+        "opts": [
+          "# comment",
+          "// comment",
+          "/* comment */",
+          "-- comment"
+        ],
+        "ans": 0,
+        "explain": "Python uses # for single-line comments."
+      },
+      {
+        "q": "What does len() return?",
+        "opts": [
+          "The length of an object",
+          "The last element",
+          "The data type",
+          "A boolean"
+        ],
+        "ans": 0,
+        "explain": "len() returns the number of items in a container."
+      },
+      {
+        "q": "Which operator is used for exponentiation?",
+        "opts": [
+          "**",
+          "^",
+          "^^",
+          "exp"
+        ],
+        "ans": 0,
+        "explain": "** is Python's exponentiation operator (e.g., 2**3 = 8)."
+      }
+    ],
+    "medium": [
+      {
+        "q": "What is a list comprehension?",
+        "opts": [
+          "A concise way to create lists",
+          "A sorting algorithm",
+          "A type of loop",
+          "A data class"
+        ],
+        "ans": 0,
+        "explain": "List comprehensions provide a compact syntax: [x for x in iterable]."
+      },
+      {
+        "q": "What does the 'self' parameter refer to?",
+        "opts": [
+          "The current instance",
+          "The class itself",
+          "The parent class",
+          "A global variable"
+        ],
+        "ans": 0,
+        "explain": "'self' refers to the instance of the class calling the method."
+      },
+      {
+        "q": "What is a decorator in Python?",
+        "opts": [
+          "A function that wraps another function",
+          "A class attribute",
+          "A type annotation",
+          "A module"
+        ],
+        "ans": 0,
+        "explain": "Decorators modify or extend function behavior using @syntax."
+      },
+      {
+        "q": "What does *args do in a function?",
+        "opts": [
+          "Accepts variable positional arguments",
+          "Unpacks a dictionary",
+          "Creates a generator",
+          "Defines keyword args"
+        ],
+        "ans": 0,
+        "explain": "*args collects extra positional arguments into a tuple."
+      },
+      {
+        "q": "What is the difference between a tuple and a list?",
+        "opts": [
+          "Tuples are immutable",
+          "Tuples are faster to sort",
+          "Lists can't hold strings",
+          "No difference"
+        ],
+        "ans": 0,
+        "explain": "Tuples are immutable \u2014 once created, elements cannot be changed."
+      },
+      {
+        "q": "What does 'yield' do?",
+        "opts": [
+          "Pauses function and returns a value",
+          "Stops the program",
+          "Creates a class",
+          "Imports a module"
+        ],
+        "ans": 0,
+        "explain": "'yield' makes a function a generator, lazily producing values."
+      }
+    ],
+    "hard": [
+      {
+        "q": "What is the GIL in Python?",
+        "opts": [
+          "Global Interpreter Lock limiting threads",
+          "A garbage collection method",
+          "A type system feature",
+          "A package manager"
+        ],
+        "ans": 0,
+        "explain": "The GIL prevents multiple native threads from executing Python bytecode simultaneously."
+      },
+      {
+        "q": "What is a metaclass?",
+        "opts": [
+          "A class of a class",
+          "A superclass",
+          "An abstract method",
+          "A module type"
+        ],
+        "ans": 0,
+        "explain": "Metaclasses define how classes themselves are created and behave."
+      },
+      {
+        "q": "What does __slots__ do?",
+        "opts": [
+          "Restricts instance attributes and saves memory",
+          "Creates class slots for methods",
+          "Enables multi-threading",
+          "Defines abstract methods"
+        ],
+        "ans": 0,
+        "explain": "__slots__ prevents __dict__ creation, reducing memory usage."
+      },
+      {
+        "q": "How does Python resolve method order (MRO)?",
+        "opts": [
+          "C3 linearization",
+          "Depth-first search",
+          "Breadth-first search",
+          "Random order"
+        ],
+        "ans": 0,
+        "explain": "Python uses C3 linearization to determine method resolution order."
+      },
+      {
+        "q": "What is a descriptor in Python?",
+        "opts": [
+          "An object defining __get__, __set__, or __delete__",
+          "A type hint",
+          "A docstring",
+          "A decorator"
+        ],
+        "ans": 0,
+        "explain": "Descriptors customize attribute access via __get__, __set__, __delete__."
+      },
+      {
+        "q": "What is the difference between deepcopy and copy?",
+        "opts": [
+          "deepcopy recursively copies nested objects",
+          "They are identical",
+          "copy is faster for nested data",
+          "deepcopy only works on lists"
+        ],
+        "ans": 0,
+        "explain": "copy() creates a shallow copy; deepcopy() recursively copies all nested objects."
+      }
+    ]
+  },
+  "datastructures": {
+    "easy": [
+      {
+        "q": "What data structure uses FIFO ordering?",
+        "opts": [
+          "Queue",
+          "Stack",
+          "Tree",
+          "Graph"
+        ],
+        "ans": 0,
+        "explain": "Queues follow First-In-First-Out ordering."
+      },
+      {
+        "q": "What data structure uses LIFO ordering?",
+        "opts": [
+          "Stack",
+          "Queue",
+          "Heap",
+          "Array"
+        ],
+        "ans": 0,
+        "explain": "Stacks follow Last-In-First-Out ordering."
+      },
+      {
+        "q": "What is the time complexity of array access by index?",
+        "opts": [
+          "O(1)",
+          "O(n)",
+          "O(log n)",
+          "O(n\u00b2)"
+        ],
+        "ans": 0,
+        "explain": "Array index access is constant time O(1)."
+      },
+      {
+        "q": "What is a linked list?",
+        "opts": [
+          "Nodes connected by pointers",
+          "A sorted array",
+          "A hash table",
+          "A tree structure"
+        ],
+        "ans": 0,
+        "explain": "Linked lists consist of nodes where each points to the next."
+      },
+      {
+        "q": "What does a hash table store?",
+        "opts": [
+          "Key-value pairs",
+          "Only keys",
+          "Sorted numbers",
+          "Graph edges"
+        ],
+        "ans": 0,
+        "explain": "Hash tables map keys to values using a hash function."
+      },
+      {
+        "q": "Which is NOT a linear data structure?",
+        "opts": [
+          "Tree",
+          "Array",
+          "Stack",
+          "Queue"
+        ],
+        "ans": 0,
+        "explain": "Trees are hierarchical (non-linear) data structures."
+      }
+    ],
+    "medium": [
+      {
+        "q": "What is the average time complexity of hash table lookup?",
+        "opts": [
+          "O(1)",
+          "O(n)",
+          "O(log n)",
+          "O(n log n)"
+        ],
+        "ans": 0,
+        "explain": "Hash tables provide O(1) average-case lookup via hashing."
+      },
+      {
+        "q": "What is a balanced BST?",
+        "opts": [
+          "A tree where height difference of subtrees \u2264 1",
+          "A tree with equal values",
+          "A complete binary tree",
+          "A tree with no leaves"
+        ],
+        "ans": 0,
+        "explain": "Balanced BSTs maintain height balance for O(log n) operations."
+      },
+      {
+        "q": "What is the main advantage of a doubly linked list?",
+        "opts": [
+          "Traversal in both directions",
+          "Less memory usage",
+          "Faster sorting",
+          "Better cache performance"
+        ],
+        "ans": 0,
+        "explain": "Doubly linked lists have prev and next pointers for bidirectional traversal."
+      },
+      {
+        "q": "What is a priority queue typically implemented with?",
+        "opts": [
+          "Heap",
+          "Array",
+          "Linked list",
+          "Stack"
+        ],
+        "ans": 0,
+        "explain": "Heaps efficiently support priority queue operations."
+      },
+      {
+        "q": "What is the worst-case for hash table operations?",
+        "opts": [
+          "O(n)",
+          "O(1)",
+          "O(log n)",
+          "O(n\u00b2)"
+        ],
+        "ans": 0,
+        "explain": "Hash collisions can degrade performance to O(n) in worst case."
+      },
+      {
+        "q": "What traversal visits root, then left, then right?",
+        "opts": [
+          "Pre-order",
+          "In-order",
+          "Post-order",
+          "Level-order"
+        ],
+        "ans": 0,
+        "explain": "Pre-order: root \u2192 left subtree \u2192 right subtree."
+      }
+    ],
+    "hard": [
+      {
+        "q": "What is the amortized time complexity of dynamic array insertion?",
+        "opts": [
+          "O(1)",
+          "O(n)",
+          "O(log n)",
+          "O(n\u00b2)"
+        ],
+        "ans": 0,
+        "explain": "Despite occasional O(n) resizing, amortized insertion is O(1)."
+      },
+      {
+        "q": "What is a B-tree primarily used for?",
+        "opts": [
+          "Database indexing and disk storage",
+          "In-memory sorting",
+          "Network routing",
+          "String matching"
+        ],
+        "ans": 0,
+        "explain": "B-trees minimize disk I/O by keeping data sorted with high fanout."
+      },
+      {
+        "q": "What is the time complexity of building a heap?",
+        "opts": [
+          "O(n)",
+          "O(n log n)",
+          "O(n\u00b2)",
+          "O(log n)"
+        ],
+        "ans": 0,
+        "explain": "Bottom-up heap construction is O(n), not O(n log n)."
+      },
+      {
+        "q": "What is a trie's main advantage over hash tables for strings?",
+        "opts": [
+          "Prefix-based searching",
+          "Lower memory usage",
+          "Faster exact lookup",
+          "Better for integers"
+        ],
+        "ans": 0,
+        "explain": "Tries excel at prefix queries and autocomplete scenarios."
+      },
+      {
+        "q": "What is a skip list?",
+        "opts": [
+          "A probabilistic alternative to balanced trees",
+          "A type of linked list with no skips",
+          "A sorted array variant",
+          "A graph algorithm"
+        ],
+        "ans": 0,
+        "explain": "Skip lists use multiple levels of linked lists for O(log n) search."
+      },
+      {
+        "q": "What is the space complexity of an adjacency matrix?",
+        "opts": [
+          "O(V\u00b2)",
+          "O(V+E)",
+          "O(V)",
+          "O(E)"
+        ],
+        "ans": 0,
+        "explain": "Adjacency matrices use V\u00d7V space regardless of edge count."
+      }
+    ]
+  },
+  "algorithms": {
+    "easy": [
+      {
+        "q": "What is the time complexity of binary search?",
+        "opts": [
+          "O(log n)",
+          "O(n)",
+          "O(n\u00b2)",
+          "O(1)"
+        ],
+        "ans": 0,
+        "explain": "Binary search halves the search space each step: O(log n)."
+      },
+      {
+        "q": "Which sorting algorithm repeatedly swaps adjacent elements?",
+        "opts": [
+          "Bubble Sort",
+          "Merge Sort",
+          "Quick Sort",
+          "Heap Sort"
+        ],
+        "ans": 0,
+        "explain": "Bubble Sort compares and swaps adjacent elements repeatedly."
+      },
+      {
+        "q": "What does Big O notation describe?",
+        "opts": [
+          "Upper bound of time/space complexity",
+          "Exact runtime",
+          "Memory address",
+          "Code quality"
+        ],
+        "ans": 0,
+        "explain": "Big O describes the worst-case upper bound of an algorithm."
+      },
+      {
+        "q": "What is a recursive function?",
+        "opts": [
+          "A function that calls itself",
+          "A function with no return",
+          "A loop structure",
+          "An anonymous function"
+        ],
+        "ans": 0,
+        "explain": "Recursive functions solve problems by calling themselves with smaller inputs."
+      },
+      {
+        "q": "What is linear search?",
+        "opts": [
+          "Checking each element one by one",
+          "Dividing array in half",
+          "Using a hash function",
+          "Sorting then searching"
+        ],
+        "ans": 0,
+        "explain": "Linear search sequentially checks each element: O(n)."
+      },
+      {
+        "q": "What is the best case of Bubble Sort?",
+        "opts": [
+          "O(n)",
+          "O(n\u00b2)",
+          "O(n log n)",
+          "O(1)"
+        ],
+        "ans": 0,
+        "explain": "With an already sorted array and optimization flag, bubble sort is O(n)."
+      }
+    ],
+    "medium": [
+      {
+        "q": "What is the average time complexity of Quick Sort?",
+        "opts": [
+          "O(n log n)",
+          "O(n\u00b2)",
+          "O(n)",
+          "O(log n)"
+        ],
+        "ans": 0,
+        "explain": "Quick Sort averages O(n log n) with good pivot selection."
+      },
+      {
+        "q": "What technique does dynamic programming use?",
+        "opts": [
+          "Storing subproblem solutions to avoid recomputation",
+          "Random sampling",
+          "Greedy choices",
+          "Backtracking only"
+        ],
+        "ans": 0,
+        "explain": "DP stores results of overlapping subproblems (memoization/tabulation)."
+      },
+      {
+        "q": "What is the difference between BFS and DFS?",
+        "opts": [
+          "BFS uses queue, DFS uses stack",
+          "BFS uses stack, DFS uses queue",
+          "They are identical",
+          "BFS is always faster"
+        ],
+        "ans": 0,
+        "explain": "BFS explores level-by-level (queue); DFS goes deep first (stack)."
+      },
+      {
+        "q": "What is a greedy algorithm?",
+        "opts": [
+          "Makes locally optimal choices at each step",
+          "Tries all possibilities",
+          "Uses random selection",
+          "Always finds global optimum"
+        ],
+        "ans": 0,
+        "explain": "Greedy algorithms make the best local choice hoping for global optimum."
+      },
+      {
+        "q": "What is memoization?",
+        "opts": [
+          "Caching function results for reuse",
+          "A memory allocation technique",
+          "A sorting method",
+          "A search algorithm"
+        ],
+        "ans": 0,
+        "explain": "Memoization stores computed results to avoid redundant calculations."
+      },
+      {
+        "q": "What is the space complexity of Merge Sort?",
+        "opts": [
+          "O(n)",
+          "O(1)",
+          "O(log n)",
+          "O(n\u00b2)"
+        ],
+        "ans": 0,
+        "explain": "Merge Sort needs O(n) extra space for merging."
+      }
+    ],
+    "hard": [
+      {
+        "q": "What is the Master Theorem used for?",
+        "opts": [
+          "Solving divide-and-conquer recurrences",
+          "Finding shortest paths",
+          "Sorting arrays",
+          "Hash function design"
+        ],
+        "ans": 0,
+        "explain": "The Master Theorem provides solutions for T(n) = aT(n/b) + f(n)."
+      },
+      {
+        "q": "What problem does Dijkstra's algorithm solve?",
+        "opts": [
+          "Single-source shortest path with non-negative weights",
+          "All-pairs shortest path",
+          "Minimum spanning tree",
+          "Maximum flow"
+        ],
+        "ans": 0,
+        "explain": "Dijkstra's finds shortest paths from one source with non-negative edges."
+      },
+      {
+        "q": "What is the time complexity of the best comparison-based sort?",
+        "opts": [
+          "O(n log n)",
+          "O(n)",
+          "O(n\u00b2)",
+          "O(log n)"
+        ],
+        "ans": 0,
+        "explain": "Comparison-based sorting has a lower bound of \u03a9(n log n)."
+      },
+      {
+        "q": "What is NP-completeness?",
+        "opts": [
+          "Problems verifiable in poly-time but no known poly-time solution",
+          "Problems solvable in O(n)",
+          "Unsolvable problems",
+          "Problems requiring O(n\u00b2)"
+        ],
+        "ans": 0,
+        "explain": "NP-complete problems can be verified quickly but have no known efficient solution."
+      },
+      {
+        "q": "What does amortized analysis measure?",
+        "opts": [
+          "Average cost per operation over a sequence",
+          "Worst single operation cost",
+          "Best case only",
+          "Space usage"
+        ],
+        "ans": 0,
+        "explain": "Amortized analysis averages the cost over a sequence of operations."
+      },
+      {
+        "q": "What is the Floyd-Warshall algorithm's complexity?",
+        "opts": [
+          "O(V\u00b3)",
+          "O(V\u00b2)",
+          "O(V\u00b7E)",
+          "O(V log V)"
+        ],
+        "ans": 0,
+        "explain": "Floyd-Warshall finds all-pairs shortest paths in O(V\u00b3) time."
+      }
+    ]
+  },
+  "databases": {
+    "easy": [
+      {
+        "q": "What does SQL stand for?",
+        "opts": [
+          "Structured Query Language",
+          "Simple Query Logic",
+          "System Query Language",
+          "Standard Query Library"
+        ],
+        "ans": 0,
+        "explain": "SQL = Structured Query Language for managing relational databases."
+      },
+      {
+        "q": "Which SQL command retrieves data?",
+        "opts": [
+          "SELECT",
+          "INSERT",
+          "UPDATE",
+          "DELETE"
+        ],
+        "ans": 0,
+        "explain": "SELECT is used to query and retrieve data from tables."
+      },
+      {
+        "q": "What is a primary key?",
+        "opts": [
+          "A unique identifier for each row",
+          "The first column",
+          "A foreign reference",
+          "An index type"
+        ],
+        "ans": 0,
+        "explain": "A primary key uniquely identifies each record in a table."
+      },
+      {
+        "q": "What does INSERT do?",
+        "opts": [
+          "Adds new records",
+          "Modifies records",
+          "Removes records",
+          "Creates tables"
+        ],
+        "ans": 0,
+        "explain": "INSERT adds new rows of data to a table."
+      },
+      {
+        "q": "What is a database table?",
+        "opts": [
+          "A structured collection of rows and columns",
+          "A single data value",
+          "A file format",
+          "A network protocol"
+        ],
+        "ans": 0,
+        "explain": "Tables organize data into rows (records) and columns (fields)."
+      },
+      {
+        "q": "What does WHERE clause do?",
+        "opts": [
+          "Filters rows based on conditions",
+          "Sorts results",
+          "Groups results",
+          "Joins tables"
+        ],
+        "ans": 0,
+        "explain": "WHERE specifies conditions to filter query results."
+      }
+    ],
+    "medium": [
+      {
+        "q": "What is database normalization?",
+        "opts": [
+          "Organizing data to reduce redundancy",
+          "Making queries faster",
+          "Adding more tables",
+          "Encrypting data"
+        ],
+        "ans": 0,
+        "explain": "Normalization structures data to minimize duplication and anomalies."
+      },
+      {
+        "q": "What is an INNER JOIN?",
+        "opts": [
+          "Returns matching rows from both tables",
+          "Returns all rows from left table",
+          "Returns all rows from both tables",
+          "Deletes matching rows"
+        ],
+        "ans": 0,
+        "explain": "INNER JOIN returns only rows with matches in both tables."
+      },
+      {
+        "q": "What is an index used for?",
+        "opts": [
+          "Speeding up data retrieval",
+          "Encrypting columns",
+          "Backing up data",
+          "Creating views"
+        ],
+        "ans": 0,
+        "explain": "Indexes create data structures that speed up query performance."
+      },
+      {
+        "q": "What are ACID properties?",
+        "opts": [
+          "Atomicity, Consistency, Isolation, Durability",
+          "Add, Create, Insert, Delete",
+          "Access, Control, Index, Data",
+          "Aggregate, Count, Iterate, Drop"
+        ],
+        "ans": 0,
+        "explain": "ACID ensures reliable database transactions."
+      },
+      {
+        "q": "What is a foreign key?",
+        "opts": [
+          "A field referencing another table's primary key",
+          "A unique identifier",
+          "An encrypted key",
+          "A composite key"
+        ],
+        "ans": 0,
+        "explain": "Foreign keys create relationships between tables."
+      },
+      {
+        "q": "What does GROUP BY do?",
+        "opts": [
+          "Groups rows sharing a value for aggregation",
+          "Sorts all rows",
+          "Filters individual rows",
+          "Joins two tables"
+        ],
+        "ans": 0,
+        "explain": "GROUP BY groups rows with same values for aggregate functions."
+      }
+    ],
+    "hard": [
+      {
+        "q": "What is a database transaction isolation level?",
+        "opts": [
+          "Controls visibility of concurrent changes",
+          "Sets query timeout",
+          "Limits table size",
+          "Defines user roles"
+        ],
+        "ans": 0,
+        "explain": "Isolation levels (READ UNCOMMITTED to SERIALIZABLE) control concurrency behavior."
+      },
+      {
+        "q": "What is sharding?",
+        "opts": [
+          "Horizontal partitioning across servers",
+          "Vertical table splits",
+          "Data encryption",
+          "Query caching"
+        ],
+        "ans": 0,
+        "explain": "Sharding distributes data across multiple servers for scalability."
+      },
+      {
+        "q": "What is a write-ahead log (WAL)?",
+        "opts": [
+          "Logs changes before applying them for crash recovery",
+          "A query optimization log",
+          "An access control list",
+          "A backup schedule"
+        ],
+        "ans": 0,
+        "explain": "WAL ensures durability by writing changes to log before data files."
+      },
+      {
+        "q": "What is the CAP theorem?",
+        "opts": [
+          "Can't have Consistency, Availability, and Partition tolerance simultaneously",
+          "Create, Alter, Purge operations",
+          "A caching strategy",
+          "A normalization form"
+        ],
+        "ans": 0,
+        "explain": "CAP states distributed systems can guarantee only 2 of 3: C, A, P."
+      },
+      {
+        "q": "What is an execution plan?",
+        "opts": [
+          "The strategy the DBMS uses to execute a query",
+          "A backup schedule",
+          "A migration script",
+          "A schema diagram"
+        ],
+        "ans": 0,
+        "explain": "Execution plans show how the query optimizer processes a SQL query."
+      },
+      {
+        "q": "What is MVCC?",
+        "opts": [
+          "Multi-Version Concurrency Control",
+          "Multiple Variable Column Check",
+          "Main Value Cache Control",
+          "Managed View Column Count"
+        ],
+        "ans": 0,
+        "explain": "MVCC allows concurrent reads/writes by maintaining multiple data versions."
+      }
+    ]
+  },
+  "networking": {
+    "easy": [
+      {
+        "q": "What does HTTP stand for?",
+        "opts": [
+          "HyperText Transfer Protocol",
+          "High Tech Transfer Protocol",
+          "HyperText Transport Process",
+          "Home Tool Transfer Protocol"
+        ],
+        "ans": 0,
+        "explain": "HTTP is the protocol for transferring web pages on the internet."
+      },
+      {
+        "q": "What is an IP address?",
+        "opts": [
+          "A unique identifier for a device on a network",
+          "A website name",
+          "A type of cable",
+          "A programming language"
+        ],
+        "ans": 0,
+        "explain": "IP addresses uniquely identify devices on a network."
+      },
+      {
+        "q": "What does DNS do?",
+        "opts": [
+          "Translates domain names to IP addresses",
+          "Encrypts data",
+          "Routes packets",
+          "Stores files"
+        ],
+        "ans": 0,
+        "explain": "DNS resolves human-readable domains to IP addresses."
+      },
+      {
+        "q": "What port does HTTP typically use?",
+        "opts": [
+          "80",
+          "443",
+          "22",
+          "21"
+        ],
+        "ans": 0,
+        "explain": "HTTP uses port 80 by default; HTTPS uses port 443."
+      },
+      {
+        "q": "What is a router?",
+        "opts": [
+          "Forwards packets between networks",
+          "Stores web pages",
+          "Creates IP addresses",
+          "Encrypts traffic"
+        ],
+        "ans": 0,
+        "explain": "Routers direct network traffic between different networks."
+      },
+      {
+        "q": "What layer does TCP operate on?",
+        "opts": [
+          "Transport layer",
+          "Application layer",
+          "Physical layer",
+          "Data link layer"
+        ],
+        "ans": 0,
+        "explain": "TCP operates at the Transport layer (Layer 4) of the OSI model."
+      }
+    ],
+    "medium": [
+      {
+        "q": "What is the difference between TCP and UDP?",
+        "opts": [
+          "TCP is reliable and ordered; UDP is fast and connectionless",
+          "They are identical",
+          "UDP is more reliable",
+          "TCP is connectionless"
+        ],
+        "ans": 0,
+        "explain": "TCP ensures delivery and order; UDP sacrifices reliability for speed."
+      },
+      {
+        "q": "What is a subnet mask?",
+        "opts": [
+          "Divides IP into network and host portions",
+          "Encrypts network traffic",
+          "A type of firewall",
+          "A DNS record"
+        ],
+        "ans": 0,
+        "explain": "Subnet masks determine which part of an IP is the network vs host."
+      },
+      {
+        "q": "What is HTTPS?",
+        "opts": [
+          "HTTP with TLS/SSL encryption",
+          "A faster version of HTTP",
+          "A different protocol entirely",
+          "HTTP for internal networks"
+        ],
+        "ans": 0,
+        "explain": "HTTPS adds TLS/SSL encryption to HTTP for secure communication."
+      },
+      {
+        "q": "What is a MAC address?",
+        "opts": [
+          "A hardware-level unique identifier",
+          "A software IP address",
+          "A website URL",
+          "A routing protocol"
+        ],
+        "ans": 0,
+        "explain": "MAC addresses are unique hardware identifiers assigned to network interfaces."
+      },
+      {
+        "q": "What does NAT do?",
+        "opts": [
+          "Maps private IPs to public IPs",
+          "Encrypts packets",
+          "Routes between VLANs",
+          "Assigns domain names"
+        ],
+        "ans": 0,
+        "explain": "NAT translates private network addresses to public addresses."
+      },
+      {
+        "q": "What is a three-way handshake?",
+        "opts": [
+          "SYN, SYN-ACK, ACK to establish TCP connection",
+          "Three DNS queries",
+          "Three routing hops",
+          "Three encryption keys"
+        ],
+        "ans": 0,
+        "explain": "TCP uses SYN \u2192 SYN-ACK \u2192 ACK to establish reliable connections."
+      }
+    ],
+    "hard": [
+      {
+        "q": "What is BGP used for?",
+        "opts": [
+          "Routing between autonomous systems on the internet",
+          "Local network routing",
+          "DNS resolution",
+          "Packet encryption"
+        ],
+        "ans": 0,
+        "explain": "BGP (Border Gateway Protocol) routes between large autonomous systems."
+      },
+      {
+        "q": "What is the difference between L2 and L3 switches?",
+        "opts": [
+          "L2 uses MAC addresses; L3 can route using IP",
+          "They are identical",
+          "L3 is slower",
+          "L2 uses IP addresses"
+        ],
+        "ans": 0,
+        "explain": "L2 switches use MAC addresses; L3 switches add IP routing capability."
+      },
+      {
+        "q": "What is ARP spoofing?",
+        "opts": [
+          "Sending fake ARP messages to link attacker's MAC to a victim's IP",
+          "A DNS attack",
+          "A type of firewall",
+          "Packet fragmentation"
+        ],
+        "ans": 0,
+        "explain": "ARP spoofing associates an attacker's MAC with a legitimate IP."
+      },
+      {
+        "q": "What is OSPF?",
+        "opts": [
+          "A link-state interior routing protocol",
+          "An exterior routing protocol",
+          "A DNS service",
+          "A VPN protocol"
+        ],
+        "ans": 0,
+        "explain": "OSPF uses link-state routing within an autonomous system."
+      },
+      {
+        "q": "What is the purpose of MPLS?",
+        "opts": [
+          "Speed up packet forwarding using labels instead of IP lookups",
+          "Encrypt all traffic",
+          "Replace TCP",
+          "Manage DNS"
+        ],
+        "ans": 0,
+        "explain": "MPLS uses short labels to make forwarding decisions, avoiding complex IP lookups."
+      },
+      {
+        "q": "What is a TCP sliding window?",
+        "opts": [
+          "Flow control mechanism managing data in transit",
+          "A GUI component",
+          "A routing table",
+          "An encryption method"
+        ],
+        "ans": 0,
+        "explain": "The sliding window controls how much unacknowledged data can be in flight."
+      }
+    ]
+  },
+  "generalknowledge": {
+    "easy": [
+      {
+        "q": "What is the largest planet in our solar system?",
+        "opts": [
+          "Jupiter",
+          "Saturn",
+          "Neptune",
+          "Earth"
+        ],
+        "ans": 0,
+        "explain": "Jupiter is the largest planet, with a diameter of about 139,820 km."
+      },
+      {
+        "q": "How many continents are there on Earth?",
+        "opts": [
+          "7",
+          "5",
+          "6",
+          "8"
+        ],
+        "ans": 0,
+        "explain": "The 7 continents are Asia, Africa, North America, South America, Antarctica, Europe, and Australia."
+      },
+      {
+        "q": "What gas do plants absorb from the atmosphere?",
+        "opts": [
+          "Carbon dioxide",
+          "Oxygen",
+          "Nitrogen",
+          "Hydrogen"
+        ],
+        "ans": 0,
+        "explain": "Plants absorb CO\u2082 and use it in photosynthesis to produce oxygen."
+      },
+      {
+        "q": "What is the chemical symbol for water?",
+        "opts": [
+          "H\u2082O",
+          "CO\u2082",
+          "NaCl",
+          "O\u2082"
+        ],
+        "ans": 0,
+        "explain": "Water is composed of two hydrogen atoms and one oxygen atom: H\u2082O."
+      },
+      {
+        "q": "Which organ pumps blood through the body?",
+        "opts": [
+          "Heart",
+          "Liver",
+          "Brain",
+          "Lungs"
+        ],
+        "ans": 0,
+        "explain": "The heart pumps blood through the circulatory system."
+      },
+      {
+        "q": "What is the speed of light approximately?",
+        "opts": [
+          "300,000 km/s",
+          "150,000 km/s",
+          "500,000 km/s",
+          "100,000 km/s"
+        ],
+        "ans": 0,
+        "explain": "Light travels at approximately 299,792 km/s in a vacuum."
+      }
+    ],
+    "medium": [
+      {
+        "q": "Which element has the atomic number 79?",
+        "opts": [
+          "Gold (Au)",
+          "Silver (Ag)",
+          "Iron (Fe)",
+          "Copper (Cu)"
+        ],
+        "ans": 0,
+        "explain": "Gold has atomic number 79 and the symbol Au (from Latin 'aurum')."
+      },
+      {
+        "q": "What is the longest river in the world?",
+        "opts": [
+          "Nile",
+          "Amazon",
+          "Yangtze",
+          "Mississippi"
+        ],
+        "ans": 0,
+        "explain": "The Nile River is approximately 6,650 km long, making it the longest."
+      },
+      {
+        "q": "Who developed the theory of general relativity?",
+        "opts": [
+          "Albert Einstein",
+          "Isaac Newton",
+          "Niels Bohr",
+          "Galileo Galilei"
+        ],
+        "ans": 0,
+        "explain": "Einstein published his theory of general relativity in 1915."
+      },
+      {
+        "q": "What is the smallest bone in the human body?",
+        "opts": [
+          "Stapes (stirrup)",
+          "Femur",
+          "Radius",
+          "Patella"
+        ],
+        "ans": 0,
+        "explain": "The stapes in the middle ear is the smallest bone, about 3mm long."
+      },
+      {
+        "q": "What year did World War II end?",
+        "opts": [
+          "1945",
+          "1944",
+          "1946",
+          "1943"
+        ],
+        "ans": 0,
+        "explain": "WWII ended in 1945 with the surrender of Japan."
+      },
+      {
+        "q": "What is the hardest natural substance on Earth?",
+        "opts": [
+          "Diamond",
+          "Quartz",
+          "Topaz",
+          "Sapphire"
+        ],
+        "ans": 0,
+        "explain": "Diamond scores 10 on the Mohs hardness scale, the maximum."
+      }
+    ],
+    "hard": [
+      {
+        "q": "What is Planck's constant approximately equal to?",
+        "opts": [
+          "6.626 \u00d7 10\u207b\u00b3\u2074 J\u00b7s",
+          "3.14 \u00d7 10\u207b\u00b3\u2074 J\u00b7s",
+          "9.81 \u00d7 10\u207b\u00b3\u2074 J\u00b7s",
+          "1.602 \u00d7 10\u207b\u00b3\u2074 J\u00b7s"
+        ],
+        "ans": 0,
+        "explain": "Planck's constant h \u2248 6.626 \u00d7 10\u207b\u00b3\u2074 joule-seconds."
+      },
+      {
+        "q": "Which treaty ended World War I?",
+        "opts": [
+          "Treaty of Versailles",
+          "Treaty of Paris",
+          "Treaty of Ghent",
+          "Treaty of Tordesillas"
+        ],
+        "ans": 0,
+        "explain": "The Treaty of Versailles was signed in 1919 to end WWI."
+      },
+      {
+        "q": "What is the rarest blood type?",
+        "opts": [
+          "AB negative",
+          "O negative",
+          "B negative",
+          "A negative"
+        ],
+        "ans": 0,
+        "explain": "AB negative is the rarest ABO blood type, found in about 1% of people."
+      },
+      {
+        "q": "What is the Chandrasekhar limit?",
+        "opts": [
+          "Maximum mass of a white dwarf star (~1.4 solar masses)",
+          "Speed of light in a medium",
+          "Minimum mass for nuclear fusion",
+          "Maximum size of a black hole"
+        ],
+        "ans": 0,
+        "explain": "The Chandrasekhar limit (~1.4 M\u2609) is the maximum mass for a stable white dwarf."
+      },
+      {
+        "q": "What phenomenon causes the sky to appear blue?",
+        "opts": [
+          "Rayleigh scattering",
+          "Mie scattering",
+          "Reflection",
+          "Refraction"
+        ],
+        "ans": 0,
+        "explain": "Rayleigh scattering causes shorter blue wavelengths to scatter more in the atmosphere."
+      },
+      {
+        "q": "What is the half-life of Carbon-14?",
+        "opts": [
+          "~5,730 years",
+          "~1,000 years",
+          "~10,000 years",
+          "~50,000 years"
+        ],
+        "ans": 0,
+        "explain": "Carbon-14 has a half-life of approximately 5,730 years, used in radiocarbon dating."
+      }
+    ]
+  }
+}
