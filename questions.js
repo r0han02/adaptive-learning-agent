@@ -1,4 +1,3 @@
-// ===== QUESTION BANK =====
 const QUESTIONS = {
   javascript: {
     easy: [
