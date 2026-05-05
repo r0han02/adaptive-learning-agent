@@ -60,6 +60,8 @@ function switchPage(page) {
 document.getElementById('start-btn').addEventListener('click', () => switchPage('quiz'));
 document.querySelectorAll('.topic-card').forEach(card => { card.addEventListener('click', () => { document.getElementById('quiz-topic-select').value = card.dataset.topic; switchPage('quiz') }) });
 document.getElementById('header-user-badge').addEventListener('click', () => switchPage('profile'));
+const sidebarLogo = document.querySelector('.sidebar-logo');
+if (sidebarLogo) sidebarLogo.addEventListener('click', () => switchPage('home'));
 
 // ===== QUIZ SETUP =====
 const modeBtns = document.querySelectorAll('.mode-btn');

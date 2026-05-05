@@ -35,7 +35,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 .sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar-bg);
   backdrop-filter:blur(24px);border-right:1px solid var(--glass-border);z-index:200;display:flex;flex-direction:column;
   padding:28px 16px 20px;transition:transform .3s ease}
-.sidebar-logo{display:flex;align-items:center;gap:12px;padding:0 8px 28px;border-bottom:1px solid var(--glass-border);margin-bottom:20px}
+.sidebar-logo{display:flex;align-items:center;gap:12px;padding:0 8px 28px;border-bottom:1px solid var(--glass-border);margin-bottom:20px;cursor:pointer}
 .sidebar-logo-icon{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center}
 .sidebar-logo-icon svg{width:100%;height:100%}
 .sidebar-logo-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;
