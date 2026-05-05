@@ -12,6 +12,8 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="themes.css" />
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('adaptiq-theme')||'adaptiq-dark');</script>
 </head>
 
 <body>
@@ -82,6 +84,7 @@
     <nav class="sidebar-nav">
       <div class="nav-item active" data-page="home" id="nav-home"><i data-lucide="home"></i> <span>Home</span></div>
       <div class="nav-item" data-page="quiz" id="nav-quiz"><i data-lucide="brain"></i> <span>Quiz</span></div>
+      <div class="nav-item" data-page="ai-tutor" id="nav-ai-tutor"><i data-lucide="bot"></i> <span>AI Tutor</span></div>
       <div class="nav-item" data-page="dashboard" id="nav-dashboard"><i data-lucide="bar-chart-2"></i> <span>Dashboard</span></div>
       <div class="nav-item" data-page="profile" id="nav-profile"><i data-lucide="user"></i> <span>Profile</span></div>
     </nav>
@@ -525,12 +528,62 @@
     </div>
   </section>
 
+  <!-- ===== AI TUTOR PAGE ===== -->
+  <section class="page" id="page-ai-tutor">
+    <h2 class="page-heading"><i data-lucide="bot"></i> AI Tutor</h2>
+    <div class="ai-tutor-layout">
+      <div class="chat-container" id="chat-container">
+        <div class="chat-messages" id="chat-messages">
+          <div class="chat-bubble ai">
+            <div class="chat-bubble-avatar"><i data-lucide="bot"></i></div>
+            <div class="chat-bubble-content">
+              <div class="chat-bubble-name">AdaptIQ AI</div>
+              <div class="chat-bubble-text">👋 Hey there! I'm your AI tutor — ask me anything and I'll help you learn. Pick a topic or just type your question below!</div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-area">
+          <div class="chat-topic-select">
+            <label for="chat-topic">Topic:</label>
+            <select id="chat-topic">
+              <option value="general">General</option>
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="datastructures">Data Structures</option>
+              <option value="algorithms">Algorithms</option>
+              <option value="databases">Databases</option>
+              <option value="networking">Networking</option>
+            </select>
+          </div>
+          <form id="chat-form" class="chat-input-row" action="javascript:void(0)">
+            <input type="text" id="chat-input" placeholder="Ask your AI tutor anything..." autocomplete="off" />
+            <button type="submit" class="chat-send-btn" id="chat-send-btn"><i data-lucide="send"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="ai-suggestions">
+        <div class="suggestions-title"><i data-lucide="lightbulb"></i> Quick Questions</div>
+        <button class="suggestion-chip" data-q="Explain recursion with an example">Explain recursion</button>
+        <button class="suggestion-chip" data-q="What is the difference between stack and queue?">Stack vs Queue</button>
+        <button class="suggestion-chip" data-q="How does binary search work?">Binary search</button>
+        <button class="suggestion-chip" data-q="Explain Big O notation simply">Big O notation</button>
+        <button class="suggestion-chip" data-q="What are closures in JavaScript?">JS Closures</button>
+        <button class="suggestion-chip" data-q="Explain SQL joins with examples">SQL Joins</button>
+        <button class="suggestion-chip" data-q="What is TCP/IP and how does it work?">TCP/IP</button>
+        <button class="suggestion-chip" data-q="Explain Python decorators">Python decorators</button>
+      </div>
+    </div>
+  </section>
+
   </div><!-- /main-content -->
 
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="questions.js"></script>
-  <script src="agent.js"></script>
-  <script src="effects.js"></script>
+  <script src="config.js"></script>
+  <script src="questions.js?v=2"></script>
+  <script src="agent.js?v=2"></script>
+  <script src="effects.js?v=2"></script>
+  <script src="theme-switcher.js?v=1"></script>
+
   <script>lucide.createIcons();</script>
 </body>
 

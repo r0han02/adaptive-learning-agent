@@ -134,7 +134,11 @@ function handleAnswer(selected){
   document.getElementById('next-btn').style.display='inline-block';
 }
 document.getElementById('next-btn').addEventListener('click',()=>{quizState.currentQ++;renderQuestion()});
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&quizState.answered&&document.getElementById('quiz-active').style.display!=='none'){quizState.currentQ++;renderQuestion()}});
+document.addEventListener('keydown',e=>{
+  // Don't interfere with chat input or other form fields
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT') return;
+  if(e.key==='Enter'&&quizState.answered&&document.getElementById('quiz-active').style.display!=='none'){quizState.currentQ++;renderQuestion()}
+});
 
 // ===== RESULTS =====
 function showResults(){
@@ -270,3 +274,248 @@ function updateHomePage(){
   document.getElementById('user-level-badge').textContent='Level '+STATE.level;
 }
 updateHomePage();
+
+// ============================================================
+// AI TUTOR CHAT — Powered by Groq (llama3-8b-8192)
+// ============================================================
+// SETUP:
+//   1. Go to https://console.groq.com → sign up free → create API key
+//   2. Open config.js and set your GROQ_API_KEY
+//   Then the AI Tutor will work automatically.
+// ============================================================
+(function(){
+  const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+
+  function getGroqKey() {
+    return (typeof ADAPTIQ_CONFIG !== 'undefined' && ADAPTIQ_CONFIG.GROQ_API_KEY)
+      ? ADAPTIQ_CONFIG.GROQ_API_KEY
+      : '';
+  }
+  function getGroqModel() {
+    return (typeof ADAPTIQ_CONFIG !== 'undefined' && ADAPTIQ_CONFIG.GROQ_MODEL)
+      ? ADAPTIQ_CONFIG.GROQ_MODEL
+      : 'llama-3.1-8b-instant';
+  }
+  function getGroqMaxTokens() {
+    return (typeof ADAPTIQ_CONFIG !== 'undefined' && ADAPTIQ_CONFIG.GROQ_MAX_TOKENS)
+      ? ADAPTIQ_CONFIG.GROQ_MAX_TOKENS
+      : 1024;
+  }
+
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatSendBtn = document.getElementById('chat-send-btn');
+  const chatTopicSelect = document.getElementById('chat-topic');
+  if(!chatForm) return;
+
+  // Full conversation history — sent to Groq for context
+  let chatHistory = [];
+
+  // Simple markdown to HTML converter
+  function mdToHtml(text){
+    let html = text
+      .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+      .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+      .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
+      .replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+    html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+    html = html.split('\n\n').map(block => {
+      block = block.trim();
+      if(!block) return '';
+      if(block.startsWith('<h') || block.startsWith('<pre') || block.startsWith('<ul') || block.startsWith('<ol') || block.startsWith('<blockquote')) return block;
+      return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
+    }).join('');
+    return html;
+  }
+
+  function addMessage(role, text){
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble ' + role;
+    const avatarContent = role === 'ai'
+      ? '<i data-lucide="bot"></i>'
+      : (STATE.user ? STATE.user.name.charAt(0).toUpperCase() : 'U');
+    bubble.innerHTML = `
+      <div class="chat-bubble-avatar">${avatarContent}</div>
+      <div class="chat-bubble-content">
+        <div class="chat-bubble-name">${role === 'ai' ? 'AdaptIQ AI' : 'You'}</div>
+        <div class="chat-bubble-text">${role === 'ai' ? mdToHtml(text) : text}</div>
+      </div>`;
+    chatMessages.appendChild(bubble);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    if(window.lucide) lucide.createIcons();
+  }
+
+  function showTyping(){
+    const el = document.createElement('div');
+    el.className = 'chat-bubble ai';
+    el.id = 'typing-bubble';
+    el.innerHTML = `
+      <div class="chat-bubble-avatar"><i data-lucide="bot"></i></div>
+      <div class="chat-bubble-content">
+        <div class="chat-bubble-name">AdaptIQ AI</div>
+        <div class="typing-indicator"><span></span><span></span><span></span></div>
+      </div>`;
+    chatMessages.appendChild(el);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    if(window.lucide) lucide.createIcons();
+  }
+
+  function hideTyping(){
+    const el = document.getElementById('typing-bubble');
+    if(el) el.remove();
+  }
+
+  async function sendMessage(message){
+    // Check for API key before sending
+    const apiKey = getGroqKey();
+    if(!apiKey || apiKey === 'your_key_here') {
+      addMessage('user', message);
+      chatInput.value = '';
+      addMessage('ai', '⚠️ **Groq API key not configured.**\n\nTo use the AI Tutor:\n\n1. Go to [console.groq.com](https://console.groq.com) and sign up (free)\n2. Create an API key\n3. Open `config.js` and replace `your_key_here` with your API key\n4. Refresh the page\n\nThat\'s it — no downloads needed!');
+      return;
+    }
+
+    addMessage('user', message);
+    chatInput.value = '';
+    chatSendBtn.disabled = true;
+    chatInput.disabled = true;
+
+    // Build Groq-compatible messages with AdaptIQ system prompt
+    const topic = chatTopicSelect.value;
+    const systemMsg = {
+      role: 'system',
+      content: 'You are an AI tutor inside AdaptIQ, a learning platform. '
+        + 'Help users understand quiz topics, explain wrong answers, '
+        + 'suggest what to study next, and motivate them to keep learning. '
+        + (topic !== 'general' ? 'The user is currently studying: ' + topic + '. Focus your answers on this topic when relevant. ' : '')
+        + 'Explain concepts clearly with examples and code snippets when appropriate. Use markdown formatting.'
+    };
+
+    chatHistory.push({ role: 'user', content: message });
+
+    showTyping();
+
+    try {
+      const res = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: getGroqModel(),
+          messages: [systemMsg, ...chatHistory],
+          max_tokens: getGroqMaxTokens()
+        })
+      });
+
+      if(!res.ok) {
+        const errBody = await res.text();
+        if(res.status === 401) throw new Error('Invalid API key. Please check your key in config.js.');
+        if(res.status === 429) throw new Error('Rate limit exceeded. Please wait a moment and try again.');
+        throw new Error('Groq API returned status ' + res.status + ': ' + errBody);
+      }
+
+      const data = await res.json();
+      hideTyping();
+      const reply = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content)
+        ? data.choices[0].message.content
+        : 'Sorry, I received an empty response.';
+      addMessage('ai', reply);
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch(err) {
+      hideTyping();
+      const errorMsg = (err.message.includes('Failed to fetch') || err.message.includes('NetworkError'))
+        ? '⚠️ **Could not connect to Groq API.** Please check your internet connection and try again.'
+        : '⚠️ **Error:** ' + err.message;
+      addMessage('ai', errorMsg);
+    }
+    chatSendBtn.disabled = false;
+    chatInput.disabled = false;
+    chatInput.focus();
+  }
+
+  chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const msg = chatInput.value.trim();
+    if(!msg) return;
+    sendMessage(msg);
+  });
+
+  // Suggestion chips — powered by Groq
+  document.querySelectorAll('.suggestion-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const q = chip.getAttribute('data-q');
+      if(q) sendMessage(q);
+    });
+  });
+})();
+
+// ============================================================
+// AI-POWERED QUIZ GENERATION (enhances existing quiz)
+// ============================================================
+(function(){
+  const beginBtn = document.getElementById('begin-quiz-btn');
+  if(!beginBtn) return;
+
+  // Override the startQuiz function to try AI generation first
+  const originalStartQuiz = window.startQuiz || startQuiz;
+
+  // Replace the begin quiz button handler
+  beginBtn.removeEventListener('click', originalStartQuiz);
+  beginBtn.addEventListener('click', async function(){
+    const topic = document.getElementById('quiz-topic-select').value;
+    const totalQ = parseInt(document.getElementById('question-count').textContent);
+    let diff = 'medium';
+    if(quizState.mode === 'adaptive'){
+      const s = STATE.topicStats[topic];
+      diff = s ? s.currentDiff : 'medium';
+    } else {
+      diff = quizState.manualDiff;
+    }
+
+    quizState = {...quizState, topic, totalQ, currentQ: 0, correct: 0, currentDiff: diff, startTime: Date.now(), questions: [], answered: false};
+
+    // Show loading state
+    document.getElementById('quiz-setup').style.display = 'none';
+    document.getElementById('quiz-results').style.display = 'none';
+    document.getElementById('quiz-active').style.display = 'block';
+    document.getElementById('q-text').textContent = 'Generating AI questions...';
+    document.getElementById('options-grid').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)"><div class="typing-indicator" style="justify-content:center"><span></span><span></span><span></span></div><p style="margin-top:16px">AI is crafting personalized questions...</p></div>';
+
+    let useAI = false;
+    try {
+      const res = await fetch('/api/generate-questions', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({topic: TOPIC_NAMES[topic] || topic, difficulty: diff, count: totalQ})
+      });
+      const data = await res.json();
+      if(data.status === 'ok' && data.questions && data.questions.length > 0){
+        quizState.questions = data.questions.map(q => shuffleQuestion(q));
+        useAI = true;
+      }
+    } catch(e){ /* fallback to static */ }
+
+    if(!useAI){
+      // Fallback to static question bank
+      generateQuestions();
+    }
+
+    // Add AI badge to quiz title if AI-generated
+    const titleEl = document.querySelector('.quiz-card-title');
+    if(titleEl){
+      titleEl.innerHTML = 'Student Quiz' + (useAI ? ' <span class="ai-badge"><i data-lucide="sparkles"></i> AI Generated</span>' : '');
+    }
+
+    renderQuestion();
+    if(window.lucide) lucide.createIcons();
+  });
+})();
